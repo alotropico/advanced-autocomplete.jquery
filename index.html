@@ -1,0 +1,247 @@
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Lightweight jQuery plugin to add filter and autocomplete funcionality to inputs">
+    <meta name="keywords" content="jquery, plugin, autocomplete, filter, select">
+    <meta name="author" content="Leandro Vieira">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>jQuery Void Autocomplete plugin</title>
+
+    <link rel="shortcut icon" href="favicon.png" />
+
+    <script language="javascript" type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <script language="javascript" type="text/javascript" src="js/void_autocomplete.js"></script>
+    <link rel="stylesheet" href="css/void_autocomplete.css">
+
+    <script type="text/javascript" src="js/sh/shCore.js"></script>
+    <script type="text/javascript" src="js/sh/shBrushJScript.js"></script>
+    <link type="text/css" rel="stylesheet" href="js/sh/shCoreDefault.css"/>
+    <script type="text/javascript">SyntaxHighlighter.all();</script>
+
+    <script language="javascript" type="text/javascript" src="js/script.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+
+      <h1>Void Autocomplete <br>jQuery plugin</h1>
+      <div class="description">
+        <p>An (arguably) lightweight plugin to add filter and autocomplete functionality to inputs, with or without the use of ajax, with or without the need for the user to start searching for a therm before showing results.</p>
+        <p><strong>Features:</strong></p>
+        <ul>
+          <li>Fixed options (is like a select box or a filter box)</li>
+          <li>Ajax request (proper autocomplete)</li>
+          <li>Controlled by mouse and keyboard</li>
+          <li>Minified, weights around 5KB</li>
+        </ul>
+
+        <div class="centered"><a href="https://github.com/alotropico/jquery.autocomplete" class="button">Download or fork on Github</a></div>
+      </div>
+
+      <div class="content">
+
+        <div class="box">
+
+          <h3>Installation</h3>
+
+          <ul>
+            <li>Add jQuery</li>
+            <li>Add void_autocomplete.js</li>
+            <li>Add void_autocomplete.css</li>
+          </ul>
+
+        </div>
+
+        <div class="box">
+
+          <h3>Basic usage</h3>
+
+<pre class="brush: js;">
+// If you are not using the ajax option
+// you'll need to pass the list of items
+// as an array of objects
+
+var celestial_bodies = [
+  {title:"Earth", id:"1"},
+  {title:"Moon", id:"2"},
+  {title:"Sun", id:"3"}
+];
+
+var myAutocomplete = $("input").void_autocomplete({
+  list: celestial_bodies,
+  onItemSelect: function(){console.log(item);}
+});
+</pre>
+
+          <div class="field_item">
+            <input id="input_1" placeholder="Add...">
+          </div>
+
+          <ul id="results_1" class="results"></ul>
+        </div>
+
+        <div class="box">
+
+          <h3>Using it with an ajax call</h3>
+
+          <p>When the input changes, a call is made, retrieving the results for the user input.</p>
+
+          <p>If "list.php/" is provided, "list.php/userInput" will be called, and so on.</p>
+
+<pre class="brush: js;">
+var ajax_url = "json/list.json";
+
+var myAutocomplete = $("input").void_autocomplete({
+  ajax: ajax_url,
+  onItemSelect: autocompleteCallback,
+  maxResults: 10
+});
+
+// This function is called whenever
+// an option is selected in the autocomplete
+
+function autocompleteCallback(selected){
+    console.log(selected);
+}
+</pre>
+          
+          <div class="field_item">
+            <input id="input_2" placeholder="Find stuff in the Solar System...">
+          </div>
+
+          <ul id="results_2" class="results"></ul>
+        </div>
+
+        <div class="box">
+
+          <h3>All options</h3>
+
+          <ul>
+            <li>
+              <em>min</em>:
+              Minimum amount of characters in the input before open the autocomplete.
+              <small>Default: 1</small>
+            </li>
+            <li>
+              <em>selections</em>:
+              0 to allow any number of selections. 1 for a single selection.
+              <small>Default: 0</small>
+            </li>
+            <li>
+              <em>openUp</em>:
+              If true, opens the list up, over the input. Otherwise it opens down.
+              <small>Default: false</small>
+            </li>
+            <li>
+              <em>list</em>:
+              Array of objects to list as options.
+              <small>Default: empty</small>
+            </li>
+            <li>
+              <em>caseSensitive</em>:
+              If the search will be case sensitive.
+              <small>Default: false</small>
+            </li>
+            <li>
+              <em>maxResults</em>:
+              Maxium amount of items to display as an autocomplete suggestion.
+              <small>Default: 10</small>
+            </li>
+            <li>
+              <em>sortKey</em>:
+              The key that defines in which order the list items will be displayed.
+              <small>Default: false (sorts by coincidence)</small>
+            </li>
+            <li>
+              <em>ajax</em>:
+              Minimum amount of characters in the input before open the autocomplete.
+              <small>Default: false</small>
+            </li>
+            <li>
+              <em>onItemSelect</em>:
+              Callback function, triggered whenever the user makes a selection.
+              <small>Default: none</small>
+            </li>
+          </ul>
+
+<pre class="brush: js;">
+// Default setup
+
+var myAutocomplete = $("input").void_autocomplete({
+  min: 1,
+  selections: 0,
+  openUp: false,
+  list: [],
+  caseSensitive: false,
+  maxResults: 10,
+  sortKey: false,
+  ajax: false,
+  onItemSelect: function(){}
+});
+</pre>
+        </div>
+
+        <div class="box">
+
+          <h3>Methods</h3>
+
+          <ul>
+            <li>
+              <em class="strong">forceItem</em>:
+              Inserts a new list item and triggers the callback. It may be handy specially when <em>selections</em> equals 1.
+            </li>
+          </ul>
+
+          <ul>
+            <li>
+              <em class="strong">recoverItem</em>:
+              Unselects a previously selected item and triggers the callback. It may be handy specially when <em>selections</em> equals 1.
+            </li>
+          </ul>
+
+<pre class="brush: js;">
+
+var myAutocomplete = $("input").void_autocomplete({
+  selections: 1,
+  list: celestial_bodies
+});
+
+var pluto = {
+  title:"Pluto",
+  id:"11"
+};
+
+myAutocomplete.forceItem(pluto);
+</pre>
+          
+          <div class="field_item">
+            <input id="input_3" placeholder="Select...">
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="footer">
+
+        <a href="https://github.com/alotropico/jquery.autocomplete" class="button">Download or fork on Github</a>
+
+        <br><br>
+
+        jQuery voidAutocomplete was released on Oct 2016
+        <br>
+        Created and maintained by 
+        <a href="http://alotropico.com/" target="_blank">Leandro Vieira</a>
+
+      </div>
+
+    </div>
+
+  </body>
+
+</html>

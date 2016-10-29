@@ -1,0 +1,169 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+.field_autocomplete.tagged input {
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
+
+.field_autocomplete {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  line-height: 1;
+  min-width: 300px;
+}
+.field_autocomplete *, .field_autocomplete *:before, .field_autocomplete *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+.field_autocomplete input {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  width: 100%;
+  padding: .8em;
+  border-bottom: 1px solid #333333;
+  background: none;
+  color: black;
+  display: block;
+  padding: .8em;
+  border: 1px solid gray;
+}
+.field_autocomplete input:focus {
+  border-color: black;
+}
+.field_autocomplete input:-moz-placeholder {
+  color: rgba(0, 0, 0, 0.7);
+  font-style: normal;
+}
+.field_autocomplete input::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.7);
+  font-style: normal;
+}
+.field_autocomplete input:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.7);
+  font-style: normal;
+}
+.field_autocomplete input::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.7);
+  font-style: normal;
+}
+.field_autocomplete .tag {
+  font-size: 80%;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  left: 0;
+  right: 0;
+  background: yellow;
+  padding: 1.2em;
+  cursor: pointer;
+  color: black;
+  overflow: hidden;
+  border: 1px solid #cccc00;
+}
+.field_autocomplete .tag:hover {
+  background: yellow;
+}
+.field_autocomplete.tagged input {
+  border: none;
+}
+.field_autocomplete .options_list {
+  position: absolute;
+  top: 100%;
+  z-index: 3;
+  background: white;
+  left: 3px;
+  right: 3px;
+  -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+.field_autocomplete .options_list .item_list {
+  display: block;
+  padding: 1.2em;
+  font-size: 80%;
+}
+.field_autocomplete .options_list .item_list strong {
+  font-weight: bold;
+}
+.field_autocomplete .options_list .item_list.selected {
+  background: yellow;
+}
+.field_autocomplete.openup .options_list {
+  top: auto;
+  bottom: 100%;
+  -moz-box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.6);
+}
